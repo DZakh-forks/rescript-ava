@@ -1,0 +1,19 @@
+{
+  "name": "rescript-ava",
+  "version": "0.1.0",
+  "sources": [{
+    "dir": "src",
+    "subdirs": true
+  }, {
+    "dir": "test",
+    "type": "dev"
+  }, {
+    "dir": "helpers",
+    "type": "dev"
+  }],
+  "package-specs": {
+    "in-source": true,
+    "module": "es6-global",
+    "suffix": ".mjs"
+  }
+}
