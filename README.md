@@ -7,8 +7,8 @@ This is a set of [ReScript](https://rescript-lang.org/) bindings to the [AVA](ht
 Using Yarn or NPM:
 
 ```bash
-yarn add --dev rescript-ava
-npm install --save-dev rescript-ava
+yarn add --dev ava rescript-ava
+npm install --save-dev ava rescript-ava
 ```
 
 ## Usage
