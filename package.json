@@ -4,12 +4,23 @@
   "main": "index.js",
   "repository": "https://github.com/resinfo/rescript-ava.git",
   "author": "Oliver Fencott <oliverfencott@gmail.com>",
+  "description": "ReScript bindings to the AVA test framework",
   "license": "MIT",
   "private": false,
   "files": [
     "src/**/*.res",
     "src/**/*.resi",
     "bsconfig.json"
+  ],
+  "keywords": [
+    "rescript",
+    "ava",
+    "res",
+    "reason",
+    "reasonml",
+    "bucklescript",
+    "test",
+    "bindings"
   ],
   "devDependencies": {
     "rescript": "^9.1.4"
