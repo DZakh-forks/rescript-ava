@@ -31,9 +31,30 @@ let notDeepEqual: (t, 'a, 'a, ~message: string=?, unit) => unit
 let regex: (t, string, Js.Re.t, ~message: string=?, unit) => unit
 let notRegex: (t, string, Js.Re.t, ~message: string=?, unit) => unit
 
+let notThrows: (t, unit => 'a, ~message: string=?, unit) => unit
+let notThrowsAsync: (t, unit => Js.Promise.t<'a>, ~message: string=?, unit) => Js.Promise.t<unit>
+
 let pass: (t, ~message: string=?, unit) => unit
 
 let snapshot: (t, 'expected, ~message: string=?, unit) => unit
+
+type throwsExpectation = unit
+
+let throws: (
+  t,
+  unit => 'a,
+  ~expectation: throwsExpectation=?,
+  ~message: string=?,
+  unit,
+) => option<Js.Exn.t>
+
+let throwsAsync: (
+  t,
+  unit => Js.Promise.t<'a>,
+  ~expectation: throwsExpectation=?,
+  ~message: string=?,
+  unit,
+) => Js.Promise.t<option<Js.Exn.t>>
 
 let true_: (t, bool, ~message: string=?, unit) => unit
 let truthy: (t, 'actual, ~message: string=?, unit) => unit

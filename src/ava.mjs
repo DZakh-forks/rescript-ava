@@ -178,6 +178,15 @@ function notRegex(prim0, prim1, prim2, prim3, prim4) {
   
 }
 
+function notThrows(prim0, prim1, prim2, prim3) {
+  prim0.notThrows(prim1, prim2 !== undefined ? Caml_option.valFromOption(prim2) : undefined);
+  
+}
+
+function notThrowsAsync(prim0, prim1, prim2, prim3) {
+  return prim0.notThrowsAsync(prim1, prim2 !== undefined ? Caml_option.valFromOption(prim2) : undefined);
+}
+
 function pass(prim0, prim1, prim2) {
   prim0.pass(prim1 !== undefined ? Caml_option.valFromOption(prim1) : undefined);
   
@@ -186,6 +195,14 @@ function pass(prim0, prim1, prim2) {
 function snapshot(prim0, prim1, prim2, prim3) {
   prim0.snapshot(prim1, prim2 !== undefined ? Caml_option.valFromOption(prim2) : undefined);
   
+}
+
+function throws(prim0, prim1, prim2, prim3, prim4) {
+  return prim0.throws(prim1, prim2 !== undefined ? Caml_option.valFromOption(prim2) : undefined, prim3 !== undefined ? Caml_option.valFromOption(prim3) : undefined);
+}
+
+function throwsAsync(prim0, prim1, prim2, prim3, prim4) {
+  return prim0.throwsAsync(prim1, prim2 !== undefined ? Caml_option.valFromOption(prim2) : undefined, prim3 !== undefined ? Caml_option.valFromOption(prim3) : undefined);
 }
 
 function true_(prim0, prim1, prim2, prim3) {
@@ -216,8 +233,12 @@ export {
   notDeepEqual ,
   regex ,
   notRegex ,
+  notThrows ,
+  notThrowsAsync ,
   pass ,
   snapshot ,
+  throws ,
+  throwsAsync ,
   true_ ,
   truthy ,
   after ,

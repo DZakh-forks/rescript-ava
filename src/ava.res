@@ -141,11 +141,20 @@ external notDeepEqual: (t, 'a, 'a, ~message: string=?, unit) => unit = "notDeepE
 external notRegex: (t, string, Js.Re.t, ~message: string=?, unit) => unit = "notRegex"
 
 // TODO:
-// @send
-// external notThrows: (t, unit => 'a, ~message: string=?, unit) => unit = "notThrows"
 
-// @send
-// external notThrowsAsync: (t, unit => Js.Promise.t<'a>) => Js.Promise.t<unit> = "notThrowsAsync"
+@ocaml.doc("Assert that the function does not throw.") @send
+external notThrows: (t, unit => 'a, ~message: string=?, unit) => unit = "notThrows"
+
+@ocaml.doc(
+  "Assert that the async function does not throw, or that the promise does not reject. Must be awaited."
+)
+@send
+external notThrowsAsync: (
+  t,
+  unit => Js.Promise.t<'a>,
+  ~message: string=?,
+  unit,
+) => Js.Promise.t<unit> = "notThrowsAsync"
 
 @ocaml.doc("Count a passing assertion.") @send
 external pass: (t, ~message: string=?, unit) => unit = "pass"
@@ -159,11 +168,31 @@ external regex: (t, string, Js.Re.t, ~message: string=?, unit) => unit = "regex"
 @send
 external snapshot: (t, 'expected, ~message: string=?, unit) => unit = "snapshot"
 
-// @send
-// external throws: (t, unit => 'a) => 'a = "throws"
+type throwsExpectation = unit
+@ocaml.doc(
+  "Assert that the function throws [an error](https://www.npmjs.com/package/is-error). If so, returns the error value."
+)
+@send
+external throws: (
+  t,
+  unit => 'a,
+  // TODO:
+  ~expectation: throwsExpectation=?,
+  ~message: string=?,
+  unit,
+) => option<Js.Exn.t> = "throws"
 
-// @send
-// external throwsAsync: (t, unit => Js.Promise.t<'a>) => Js.Promise.t<'a> = "throwsAsync"
+@ocaml.doc("Assert that the async function throws [an error](https://www.npmjs.com/package/is-error), or the promise rejects
+  with one. If so, returns a promise for the error value, which must be awaited.")
+@send
+external throwsAsync: (
+  t,
+  unit => Js.Promise.t<'a>,
+  // TODO:
+  ~expectation: throwsExpectation=?,
+  ~message: string=?,
+  unit,
+) => Js.Promise.t<option<Js.Exn.t>> = "throwsAsync"
 
 @ocaml.doc("Assert that `actual` is strictly true.") @send
 external true_: (t, bool, ~message: string=?, unit) => unit = "true"
