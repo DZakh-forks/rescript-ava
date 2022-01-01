@@ -6,6 +6,11 @@
   "author": "Oliver Fencott <oliverfencott@gmail.com>",
   "license": "MIT",
   "private": false,
+  "files": [
+    "src/**/*.res",
+    "src/**/*.resi",
+    "bsconfig.json"
+  ],
   "devDependencies": {
     "rescript": "^9.1.4"
   },
