@@ -16,6 +16,6 @@
   "scripts": {
     "make": "rescript build -with-deps",
     "clean": "rescript clean",
-    "test": "ava"
+    "test": "yarn make && ava"
   }
 }
